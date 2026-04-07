@@ -185,7 +185,7 @@ function initDashboard() {
 
 function renderExerciseList() {
     const list = document.getElementById('exercise-list');
-    if (!list) return; // Prevent crashes if HTML is missing
+    if (!list) return; 
     list.innerHTML = '';
     
     let totalSetsGlobal = 0;
@@ -203,22 +203,20 @@ function renderExerciseList() {
             }
         }
 
-        // Only show main exercises on the dashboard
-        if (ex.category === 'main') {
-            const isComplete = exCompletedSets === ex.sets;
-            const card = document.createElement('div');
-            card.className = `ex-card ${isComplete ? 'completed' : ''}`;
-            card.onclick = () => enterFlowMode(index);
-            
-            card.innerHTML = `
-                <div class="ex-card-info">
-                    <h3>${ex.name}</h3>
-                    <span class="ex-card-meta">${exCompletedSets}/${ex.sets} Sets • ${ex.reps} Reps</span>
-                </div>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="${isComplete ? 'var(--success)' : 'var(--text-secondary)'}" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            `;
-            list.appendChild(card);
-        }
+        // REMOVED the filter! Now ALL exercises (main AND abs) will show up here.
+        const isComplete = exCompletedSets === ex.sets;
+        const card = document.createElement('div');
+        card.className = `ex-card ${isComplete ? 'completed' : ''}`;
+        card.onclick = () => enterFlowMode(index);
+        
+        card.innerHTML = `
+            <div class="ex-card-info">
+                <h3>${ex.name}</h3>
+                <span class="ex-card-meta">${exCompletedSets}/${ex.sets} Sets • ${ex.reps} Reps</span>
+            </div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="${isComplete ? 'var(--success)' : 'var(--text-secondary)'}" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        `;
+        list.appendChild(card);
     });
 
     if(totalSetsGlobal > 0) {
