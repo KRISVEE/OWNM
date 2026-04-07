@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Aura | Focused Flow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+<header class="dashboard-header">
+            <div class="header-top">
+                <div class="title-group">
+                    <h2 id="current-day">Loading...</h2>
+                    <h1 id="workout-title">Loading...</h1>
+                </div>
+                <div class="streak-badge">
+                    <span class="icon">🔥</span>
+                    <span id="streak-count">0</span>
+                </div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-labels">
+                    <span>Workout Progress</span>
+                    <span id="progress-text">0%</span>
+                </div>
+                <div class="progress-track">
+                    <div id="progress-bar" class="progress-fill"></div>
+                </div>
+            </div>
+        </header>
+
+    <div id="flow-view" class="view-container flow-container">
+        <header class="flow-header">
+            <button class="nav-btn back-btn" onclick="exitFlowMode()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div class="flow-title-group">
+                <h1 id="flow-ex-name">Exercise Name</h1>
+                <span id="flow-ex-progress" class="status-badge">0/4 Sets</span>
+            </div>
+            <div class="nav-placeholder"></div>
+        </header>
+
+        <main class="flow-body">
+            <div id="flow-anim-container" class="flow-anim-container">
+                <div class="flow-visual">
+                    <img id="flow-gif" src="" alt="Exercise Demonstration" />
+                </div>
+                
+                <div class="set-info-display">
+                    <h2 id="flow-set-title">Set 1</h2>
+                    <p id="flow-set-reps">8-12 Reps</p>
+                </div>
+
+                <div class="weight-input-container">
+                    <input type="number" id="flow-weight-input" placeholder="0" inputmode="decimal">
+                    <span class="unit-label">lbs/kg</span>
+                </div>
+            </div>
+        </main>
+
+        <footer class="flow-controls">
+            <button class="control-btn nav-arrow" id="btn-prev" onclick="prevSet()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            
+            <button class="control-btn primary-action" id="btn-done" onclick="markSetDone()">
+                <span id="done-text">Mark as Done</span>
+                <svg id="done-icon" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+
+            <button class="control-btn nav-arrow" id="btn-next" onclick="nextSet()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
