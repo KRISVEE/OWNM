@@ -203,6 +203,7 @@ function renderExerciseList() {
             }
         }
 
+        // Only show main exercises on the dashboard
         if (ex.category === 'main') {
             const isComplete = exCompletedSets === ex.sets;
             const card = document.createElement('div');
